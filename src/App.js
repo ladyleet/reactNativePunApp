@@ -5,7 +5,8 @@ import {
   Text,
   View,
   Image,
-  Animated
+  Animated,
+  Linking
 } from 'react-native';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -18,16 +19,30 @@ import VueScreen from './VueScreen';
 const MainContainer = styled.View`
   justifyContent: center;
   alignItems: center;
-  margin-top: 300px;
+  margin-top: 200px;
 `;
 
 const StyledImage = styled.Image`
-  margin: 20px;
+  margin: 30px;
+`;
+
+const TextLink = styled.Text`
+  color: blue;
 `;
 
 const ReactNativePunApp = props => (
       <MainContainer>
         <StyledImage source={require('./img/jeopardy-js.png')}/>
+        <Text>Find this project on</Text>
+        <TextLink
+          onPress={() => Linking.openURL('http://github.com/ladyleet')}>
+          Github
+        </TextLink>
+        <Text>Made with ❤️ by</Text>
+        <TextLink
+          onPress={() => Linking.openURL('http://twitter.com/ladyleet')}>
+          @ladyleet
+        </TextLink>
       </MainContainer>
     );
 
