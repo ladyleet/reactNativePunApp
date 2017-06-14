@@ -4,35 +4,69 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  ScrollView
 } from 'react-native';
 import styled from 'styled-components/native';
+import Question from './Question';
+import Answer from './Answer';
 
-const MainContainer = styled.View`
+const data = [{
+  Q: "The creator of Vue.",
+  A: "Who is Evan You?"
+},{
+  Q: "True or False: Vue has a cli.",
+  A: "What is true?"
+},{
+  Q: "This country has the largest adoption of Vue.",
+  A: "What is China?"
+},{
+  Q: "Vue has over _____ stars on Github.",
+  A: "What is 56,635?"
+},{
+  Q: "Vue was written while the author was at this company.",
+  A: "What is Google?"
+},{
+  Q: "True or False: React is an MVC based framework.",
+  A: "What is false?"
+},{
+  Q: "Vue was released on this year.",
+  A: "What is February 2014?"
+}];
+
+const ContainerTitle = styled.View`
   justifyContent: center;
   alignItems: center;
-  backgroundColor: #F5FCFF;
-  margin-top: 300px;
+  margin: 10px;
 `;
 
-const WelcomeText = styled.Text`
-  fontSize: 20;
-  textAlign: center;
+const ImageStyled = styled.Image`
+  margin: 10px;
 `;
 
-const StyledImage = styled.Image`
-  margin: 20px;
+const ContainerQuestion = styled.View`
+  margin: 10px;
 `;
 
 export default class VueScreen extends Component {
   render() {
     return (
-      <MainContainer>
-        <WelcomeText>
-          Welcome to Vue.
-        </WelcomeText>
-        <StyledImage source={require('./img/banana.png')}/>
-      </MainContainer>
+      <ContainerTitle>
+        <ImageStyled source={require('./img/jeopardy-vue.png')}/>
+        <ScrollView>
+          {data.map(trivia => (
+            <ContainerQuestion>
+              <Question q={trivia.Q}/>
+              <Answer a={trivia.A}/>
+            </ContainerQuestion>
+          ))}
+        </ScrollView>
+      </ContainerTitle>
     );
   }
+}
+VueScreen.navigationOptions = {
+  tabBarIcon: () => (
+    <ImageStyled source={require('./img/vue.png')}/>
+  )
 }

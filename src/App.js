@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  Animated
 } from 'react-native';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -20,32 +21,24 @@ const MainContainer = styled.View`
   margin-top: 300px;
 `;
 
-const WelcomeText = styled.Text`
-  fontSize: 20;
-  textAlign: center;
-`;
-
 const StyledImage = styled.Image`
   margin: 20px;
 `;
 
 const ReactNativePunApp = props => (
       <MainContainer>
-        <WelcomeText>
-          The Punderful World of Frameworks.
-        </WelcomeText>
-        <StyledImage source={require('./img/banana.png')}/>
+        <StyledImage source={require('./img/jeopardy-js.png')}/>
       </MainContainer>
     );
 
 ReactNativePunApp.navigationOptions = {
   tabBarIcon: () => (
-    <StyledImage source={require('./img/banana.png')}/>
+    <StyledImage source={require('./img/js.png')}/>
   )
 }
 
 const mainNavigator = TabNavigator({
-  Frameworks: {
+  Home: {
     screen: ReactNativePunApp,
     path: ''
   },
